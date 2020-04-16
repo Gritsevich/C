@@ -1,0 +1,70 @@
+#include <stdio.h>
+#include <math.h>
+
+	double five(int a, int b, int c)
+	{
+		double p = (a + b + c) / 2;
+		double p1 = p - a, p2 = p - b, p3 = p - c;
+		p = p * p1 * p2 * p3;
+
+		return sqrt(p);
+	}
+
+	int four(int a, int b, int c)
+	{
+		return a + b + c;
+	}
+
+	void second(int a, int b, int c)
+	{
+		int k = 0;
+		if (a + b > c)
+		{
+			printf("you can build a triangle\n");
+		}
+		if (a == b == c)
+		{
+			printf("its a regular triangle\n");  k++;
+		}
+		if (a == b || b == c || a == c)
+		{
+			printf("its a isosceles triangle\n"); k++;
+		}
+		if (c == sqrt(pow(a, 2) + pow(b, 2)))
+			printf("its a right triangle\n");
+		if (k == 0)
+			printf("its an arbitrary triangle\n"); 
+	}
+
+	int coordinates()
+	{
+		int x1, x2, y1, y2;
+		printf("enter the coordinates of the point   \n");
+		scanf_s("%d", &x1);
+		scanf_s("%d", &y1);
+		scanf_s( "%d", &x2);
+		scanf_s( "%d", &y2);
+		
+		int x=x2-x1, y=y2-y1;
+
+		return sqrt((pow(x, 2) + pow(y, 2)));
+	}
+
+	int main()
+	{
+		int a, b, c;
+		a = coordinates();
+		b = coordinates();
+		c = coordinates();
+
+		second(a, b, c);
+
+		int p = four(a, b, c);
+		printf("perimeter = %d",p);
+		printf("\n");
+
+		double s = five(a, b, c);
+		printf("area = %f",s);
+		printf("\n");
+
+	}
