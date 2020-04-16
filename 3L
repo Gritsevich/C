@@ -1,0 +1,77 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <malloc.h>
+
+#define n 5	
+
+	int main()
+	{
+		int i, j, k = n * n + 1;
+		int imin = 0, jmin = 0, imax = n - 1, jmax = n - 1;
+
+		int* a;
+		a = (int*)malloc(n*n * sizeof(int));
+
+
+		for (i = imax, j = 0; j <= jmax; j++)
+		{
+			k--;
+			*(a+i*n+j) = k;                                          /*нижняя строка*/
+		}
+
+		for (j = jmax, i = imax - 1; i >= imin; i--)
+		{
+			k--;
+			*(a + i * n + j) = k;                                        /*правый столбец*/
+		}
+
+		for (i = imin, j = jmax - 1; j >= jmin; j--)
+		{
+			k--;
+			*(a + i * n + j) = k;                                       /*верхняя строка*/
+		}
+
+		for (j = jmin, i = imin + 1; i < imax; i++)
+		{
+			k--;
+			*(a + i * n + j) = k;                                    /*первый столбец*/
+		}
+
+		for (j = jmin + 1, i = imax - 1; j < jmax; j++)
+		{
+			k--;
+			*(a + i * n + j) = k;
+		}
+
+		for (j = jmax - 1, i = imin + 2; i > imin; i--)
+		{
+			k--;
+			*(a + i * n + j) = k;
+		}
+
+		for (j = jmin + 2, i = imin + 1; j > jmin; j--)
+		{
+			k--;
+			*(a + i * n + j) = k;
+		}
+
+		for (j = jmin + 1, i = imin + 2; j < jmax - 1; j++)
+		{
+			k--;
+			*(a + i * n + j) = k;
+		}
+
+		for (i = 0; i < n; i++)
+		{
+			for (j = 0; j < n; j++)
+			{
+				printf("%d", *(a + i * n + j));
+				printf("\t");
+			}
+			printf("\n");
+		}
+
+		free(a);
+
+	}
