@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int main()
+{
+	int k;
+	char arr[] = "18276412521634351272910001331172821972744337540964913583268598000926110648";
+	printf("write the number  ");
+d:	scanf_s("%d", &k);
+	printf("\n ");
+
+	if (k <= 0) 
+	{
+		printf("write the bigger number  "); goto d;
+	}
+
+	if (k >= 75)
+	{
+		printf("write the smaller number  "); goto d;
+	}
+
+	char* ptr;
+	ptr = &arr[0];
+
+	printf("answer  %c\n", *(ptr+k-1));
+
+}
