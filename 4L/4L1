@@ -1,0 +1,98 @@
+#include <stdio.h>
+#include <windows.h>
+
+int main()
+{
+	SetConsoleOutputCP(1251);
+	SetConsoleCP(1251);                                    
+
+	char stroka[20];
+	
+	printf("enter the text  \n\n");
+	gets(stroka);
+
+
+	for (int i=0;i<20;i++)
+	{
+		switch (stroka[i])
+		{
+		case 'A': printf(".-");  break;
+		case 'А': printf(".-");break;
+		case 'Б':printf("-..."); break;
+		case 'В':printf("-..."); break;
+		case 'B':printf(".--");  break;
+		case 'W':printf(".--");  break;
+		case 'G':printf("--.");  break;
+		case 'Г':printf("--.");  break;
+		case 'Д':printf("-..");  break;
+		case 'D':printf("-..");  break;
+		case 'Е':printf(".");  break;
+		case 'Ё':printf("."); break;
+		case 'E':printf(".");  break;
+		case 'Ж':printf("...-");  break;
+		case 'V':printf("...-");  break;
+		case 'Z':printf("--.."); break;
+		case 'З':printf("--..");  break;
+		case 'И':printf("..");  break;
+		case 'I':printf(".."); break;
+		case 'J':printf(".---");  break;
+		case 'Й':printf(".---"); break;
+		case 'К':printf("-.-");  break;
+		case 'K':printf("-.-");  break;
+		case 'L':printf(".-.."); break;
+		case 'Л':printf(".-.."); break;
+		case 'M':printf("--"); break;
+		case 'М':printf("--");  break;
+		case 'Н':printf("-.");  break;
+		case 'N':printf("-.");  break;
+		case 'O':printf("---");  break;
+		case 'О':printf("---");  break;
+		case 'П':printf(".--.");  break;
+		case 'P':printf(".--.");  break;
+		case 'R':printf(".-.");  break;
+		case 'Р':printf(".-.");  break;
+		case 'С':printf("..."); break;
+		case 'S':printf("...");  break;
+		case 'T':printf("-");  break;
+		case 'Т':printf("-");  break;
+		case 'У':printf("..-");  break;
+		case 'U':printf("..-");  break;
+		case 'F':printf("..-.");  break;
+		case 'Ф':printf("..-.");  break;
+		case 'Х':printf("....");  break;
+		case 'H':printf("....");  break;
+		case 'C':printf("-.-.");  break;
+		case 'Ц':printf("-.-.");  break;
+		case 'Ч':printf("---.");  break;
+		case 'Ш':printf("----");  break;
+		case 'Щ':printf("--.-");  break;
+		case 'Q':printf("--.-");  break;
+		case 'Ъ':printf(".--.-.");  break;
+		case 'Ы':printf("-.--"); break;
+		case 'Y':printf("-.--");  break;
+		case 'X':printf("-..-");  break;
+		case 'Ь':printf("-..-"); break;
+		case 'Э':printf("...-..."); break;
+		case 'Ю':printf("..--");  break;
+		case 'Я':printf(".-.-"); break;
+		case '1':printf(".-----"); break;
+		case '2':printf("..---");  break;
+		case '3':printf("...--");  break;
+		case '4':printf("....-");  break;
+		case '5':printf(".....");  break;
+		case '6':printf("-...."); break;
+		case '7':printf("--...");  break;
+		case '8':printf("---..");  break;
+		case '9':printf("----.");  break;
+		case '0':printf("-----");  break;
+		case '.':printf(".-.-.-");  break;
+		case ',':printf("--..--");  break;
+		case ':':printf("---...");  break;
+		case '?':printf("..--..");  break;
+		case '-':printf(".----.");  break;
+		case '/':printf("-....-");  break;
+		case ';':printf("-.--.-");  break;
+		default: printf(" ");  break;
+		}
+	}
+}
