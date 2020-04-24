@@ -1,0 +1,177 @@
+#include <stdio.h>
+#include <malloc.h>
+
+int string(char** line, char* name)
+{
+	FILE* file;
+	file = fopen(name, "r");
+
+	if (!file)
+	{
+		printf("cant open file");
+		return 1;
+	}
+
+	int i = 0;
+
+	while (fgets(line[i], 100, file))
+	{
+		i++;
+	}
+	fclose(file);
+
+	return 0;
+}
+
+int amount(char* path)
+{
+	FILE* file;
+	file = fopen(path, "r");
+
+	if (!file)
+	{
+		printf("cant open file");
+		return -1;
+	}
+
+	int i = 0;
+	char temp[100];
+
+	while (fgets(temp, 100, file))
+	{
+		i++;
+	}
+	fclose(file);
+
+	return i;
+}
+
+int separator(char sym)
+{
+	if (sym != ' ' && sym != '\n' && sym != '(' && sym != ')' && sym != ',' && sym != '*')
+	{
+		return 0;
+	}
+	else
+	{
+		return 1;
+	}
+}
+
+char** array(char** mas, int a, int b)
+{
+	mas = (char**)malloc(a * sizeof(char*));
+
+	if (mas == NULL)
+	{
+		return NULL;
+	}
+
+	for (int i = 0; i < a; i++)
+	{
+		mas[i] = (char*)malloc(b * sizeof(char));
+		if (mas[i] == NULL)
+		{
+			return NULL;
+		}
+	}
+
+	return mas;
+}
+
+void real(int** arr, int size)
+{
+	for (int i = 0; i < size; i++)
+	{
+		free(arr[i]);
+	}
+
+	free(arr);
+}
+
+int third(char* one, char* two)
+{
+	int length = 0;
+
+	while (one[length] != '\0')
+	{
+		length++;
+	}
+
+	if (length == 1)
+	{
+		return 1;
+	}
+
+	int i = 0;
+
+	while (one[i] != '\0' && two[i] != '\0')
+	{
+		if (one[i] != two[i])
+		{
+			return 1;
+		}
+		i++;
+	}
+
+	return 0;
+}
+
+int main()
+{
+	char** word = NULL;
+	char* name1 = "My_Words.txt";
+	int kamount = amount(name1);;
+
+	char** cline = NULL;
+	char* name2 = "code.txt";
+	int samount = amount(name2);
+
+	if (!(word = array(word, kamount, 100)))
+	{
+		printf("need more memory for words\n");
+		return 1;
+	}
+
+	if (!(cline = array(cline, samount, 100)))
+	{
+		printf("need more memory for code\n");
+		return 2;
+	}
+
+	string(word, name1);
+	string(cline, name2);
+
+	for (int i = 0, j = 0, k = 0; i < samount; i++, j = 0, k = 0)
+	{
+		char word[32];
+		while (cline[i][j] != '\0')
+		{
+			if (!separator(cline[i][j]))
+			{
+				word[k++] = cline[i][j];
+			}
+			else
+			{
+				word[k++] = '\0';
+		
+				for (int num = 0; num < kamount; num++)
+				{
+					if (!(third(word, word[num])))
+					{
+						for (int a = 0; a < k - 1; a++)
+						{
+							cline[i][j - k + 1 + a] = word[a] - 32;
+						}
+					}
+				}
+				k = 0;
+			}
+			j++;
+		}
+		printf(cline[i]);
+	}
+
+	real(word, kamount);
+	real(cline, samount);
+}
